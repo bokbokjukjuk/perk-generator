@@ -33,7 +33,7 @@ GRADE_VALUES = {'S': 5, 'A': 4, 'B': 3, 'C': 2, 'D': 1, 'X': 0}
 # 🌐 2. 작성자님의 깃허브 지스트 실시간 웹 데이터 수혈
 # ==========================================
 # 🎯 [수정 포인트] 예전에 만드신 진짜 Gist Raw 주소를 여기에 그대로 박아두시면 됩니다!
-GITHUB_RAW_URL = "https://githubusercontent.com"
+GITHUB_RAW_URL = "https://gist.githubusercontent.com/bokbokjukjuk/2eed3f39d4b81c33bf557f0bc4dbf25d/raw/cb5851058a2d72e3cdc56a8c11c365fd2de42b44/perk_matrix_txt"
 
 
 @st.cache_data  # 웹 서버 렉 방지를 위한 초고속 데이터 캐싱 주머니 가동
