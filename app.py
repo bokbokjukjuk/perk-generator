@@ -192,8 +192,7 @@ if generate_trigger:
                 if c in PERK_DETAIL_DATA[g]: v_scores.extend(PERK_DETAIL_DATA[g][c])
         if not v_scores: valid_flag = False; break
         v_scores.sort()
-        min_tot += v_scores;
-        max_tot += v_scores[-1]
+        min_tot += v_scores[0]; max_tot += v_scores[-1]
 
     if not valid_flag or max_tot < int(combo_min) or min_tot > int(combo_max):
         st.error(f"⚠️ 선택하신 조합의 점수한계는 [{min_tot}~{max_tot}]점 입니다. 설정 범위 제한과 절대 겹칠 수 없는 모순 조건입니다!")
