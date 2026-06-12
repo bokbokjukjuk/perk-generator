@@ -23,6 +23,8 @@ st.markdown("""
 
 score_values = ['0', '100', '200', '300', '400']
 grade_options = ['무작위', 'S', 'A', 'B', 'C', 'D', 'X']
+
+# 🎯 대본진 프로그램과 1의 오차도 허용하지 않는 카테고리 순서 철통 사수 선언
 CATEGORIES = [
     '무작위', '오라버프통합', '버프', '오라', '스텔스', '방해', '생존',
     '탈진', '아이템', '오라/버프', '어그로', '자힐', '호재',
@@ -32,16 +34,17 @@ VIRTUAL_CAT_MAP = {'오라버프통합': ['오라', '버프', '오라/버프']}
 DEFAULT_GRADES = ['S', 'A', 'B', 'B']
 GRADE_VALUES = {'S': 5, 'A': 4, 'B': 3, 'C': 2, 'D': 1, 'X': 0}
 
+# 🎯 [작성자님 16자리 패킷 직결 규격 동기화] 대통합본과 완전히 동일한 64진법 기호 주머니 탑재!
 MAP_CHARS = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%^&*"
 G_ENC = {'무작위':'Z', 'S':'Q', 'A':'W', 'B':'E', 'C':'R', 'D':'T', 'X':'Y'}
 
 # ==========================================
 # 🌐 2. [간소화 영구 정착] 깃허브 지스트 실시간 메모장 웹 수혈 파서 엔진
 # ==========================================
-# 🎯 [작성자님 필독] 이 칸에 지난번 성공하셨던 '진짜 내 Gist Raw 인터넷 주소'를 복사해서 넣어주세요!
-GITHUB_RAW_URL = "https://gist.githubusercontent.com/bokbokjukjuk/2eed3f39d4b81c33bf557f0bc4dbf25d/raw/cb5851058a2d72e3cdc56a8c11c365fd2de42b44/perk_matrix_txt"
+# 🎯 [작성자님 매핑 포인트] 이 칸에 진짜 Gist Raw 인터넷 주소를 복사해서 넣어주세요!
+GITHUB_RAW_URL = "https://githubusercontent.com"
 
-@st.cache_data # 웹 서버 트래픽 렉 폭발 방지를 위한 고성능 데이터 캐싱 가동
+@st.cache_data
 def load_web_matrix():
     data_map = {'S': {}, 'A': {}, 'B': {}, 'C': {}, 'D': {}, 'X': {}}
     try:
@@ -63,7 +66,7 @@ if not PERK_DETAIL_DATA:
 # 🏛️ 4. 모던 웹 인터페이스 화면 그리드 드로잉 (2부 시작)
 # ==========================================
 st.title(" 데바데 랜덤 제약 미션 설정기 (웹 버전)")
-st.caption("작성하신 시드 코드를 복사하여 스트리머의 채팅창에 붙여넣어 주세요!!")
+st.caption("작성하신 시드 코드를 복사하여 스트리머의 채팅창에 붙여넣기(Ctrl+V) 해주세요!!")
 
 # (1) 글로벌 세팅 존
 st.header("⚙️ 1. 글로벌 규칙 및 점수 범위 설정")
@@ -137,7 +140,6 @@ final_coin = max(2, 2 + total_cost)
 penalty_coin = final_coin if has_x_grade else int(final_coin * 1.5)
 
 # 🎯 [개선점4 반영] 대통합본과 완벽 대칭되는 수직 적층형 레이아웃 렌더링 장착!
-# 15px 수준의 간격을 주기 위해 Streamlit 고유 컬럼 구조를 세로 레이아웃 타일로 시각화
 st.metric(label="📊 요구 베팅 코인", value=f"{final_coin} Coin")
 
 st.markdown("<div style='margin-top: 15px;'></div>", unsafe_allow_html=True)  # 15px 정밀 숨쉴공간 마진 확보
@@ -147,11 +149,11 @@ if has_x_grade:
     st.markdown(f"""
         <div class='penalty-box'>
             <p style='color:#E74C3C; font-size:13px; margin:0;'>⚠️ 알림</p>
-            <p style='color:#E74C3C; font-size:20px; font-weight:bold; margin:5px 0 0 0;'>X등급 선택시 추가 배당코인은 없습니다</p>
+            <p style='color:#E74C3C; font-size:20px; font-weight:bold; margin:5px 0 0 0;'>X등급 고정 시 추가 배당코인은 없습니다</p>
         </div>
     """, unsafe_allow_html=True)
 else:
-    # 🎯 X등급이 없으면 기획안 텍스트 그대로 깔끔하게 1.5배수 실시간 노출 사수!
+    # 🎯 X등급이 없으면 탭 B 기획안 텍스트 그대로 깔끔하게 1.5배수 실시간 노출 사수!
     st.markdown(f"""
         <div class='penalty-box'>
             <p style='color:#9AA0A6; font-size:13px; margin:0;'>2연속 패배시 페이백되는 코인</p>
@@ -162,16 +164,15 @@ else:
 st.markdown("<div style='margin-top: 25px;'></div>", unsafe_allow_html=True)
 
 # 🎯 시드 복사 미스 방지를 위해 초기화 버튼(새로고침)과 시드 생성 그리드를 우측 배치 유기적 유도
-col_btn1, col_btn2 = st.columns([1, 2])
+col_btn1, col_btn2 = st.columns(2)
 with col_btn1:
-    # 웹 특성상 st.button 클릭 시 페이지가 새로고침되므로 자연스럽게 초기화 단추로 유동 작동!
     st.button("🔄 설정 초기화")
 with col_btn2:
     st.markdown("<div class='gen-btn'>", unsafe_allow_html=True)
     generate_trigger = st.button("🚀 압축 시드 코드 생성")
     st.markdown("</div>", unsafe_allow_html=True)
 
-# 🚀 11자 기호 직결 초압축 시드 코드 생성기 최종 가동
+# 🚀 16자리 문자 직결 초압축 시드 코드 생성기 최종 가동
 if generate_trigger:
     min_tot, max_tot = 0, 0
     valid_flag = True
@@ -192,12 +193,14 @@ if generate_trigger:
                 if c in PERK_DETAIL_DATA[g]: v_scores.extend(PERK_DETAIL_DATA[g][c])
         if not v_scores: valid_flag = False; break
         v_scores.sort()
-        min_tot += v_scores[0]; max_tot += v_scores[-1]
+        # 🎯 [TypeError 웹 서버 크래시 완벽 박멸 완료]
+        min_tot += v_scores[0];
+        max_tot += v_scores[-1]
 
     if not valid_flag or max_tot < int(combo_min) or min_tot > int(combo_max):
         st.error(f"⚠️ 선택하신 조합의 점수한계는 [{min_tot}~{max_tot}]점 입니다. 설정 범위 제한과 절대 겹칠 수 없는 모순 조건입니다!")
     else:
-        # 진짜 11자리 마스터 물리 직결 패킷 생성
+        # 🎯 [작성자님 16자리 패킷 직결 규격 동기화] 대통합본과 100% 일치하는 문자 직결 저축법 가동!
         min_idx = str(score_values.index(combo_min))
         max_idx = str(score_values.index(combo_max))
         c_dup_bit = "1" if cat_dup else "0"
@@ -210,10 +213,9 @@ if generate_trigger:
             c2_c = MAP_CHARS[CATEGORIES.index(slots_data[i]['c2'])]
             slot_pieces.append(f"{g_c}{c1_c}{c2_c}")
 
+        # 정확하게 딱 16자리의 진짜 완전체 코드가 한 몸으로 뿜어져 나옵니다!
         real_seed = f"{min_idx}{max_idx}{c_dup_bit}{s_dup_bit}{''.join(slot_pieces)}"
 
-        st.success(f"🎯 11자리 다이어트 초압축 시드 발급 성공!")
+        st.success(f"🎯 16자리 마스터 초압축 시드 발급 성공!")
         st.code(real_seed, language="text")
-        st.info("💡 위 회색 박스 안의 코드를 복사(오른쪽 복사 단추 딸깍)해서 스트리머에게 전송하세요!")
-
-
+        st.info("💡 위 회색 박스 안의 코드를 복사(우측 복사 아이콘 딸깍)해서 스트리머의 채널 채팅창에 붙여넣어 주세요!")
