@@ -42,7 +42,7 @@ G_ENC = {'무작위':'Z', 'S':'Q', 'A':'W', 'B':'E', 'C':'R', 'D':'T', 'X':'Y'}
 # 🌐 2. [간소화 영구 정착] 깃허브 지스트 실시간 메모장 웹 수혈 파서 엔진
 # ==========================================
 # 🎯 [작성자님 매핑 포인트] 이 칸에 진짜 Gist Raw 인터넷 주소를 복사해서 넣어주세요!
-GITHUB_RAW_URL = "https://githubusercontent.com"
+GITHUB_RAW_URL = "https://gist.githubusercontent.com/bokbokjukjuk/2eed3f39d4b81c33bf557f0bc4dbf25d/raw/cb5851058a2d72e3cdc56a8c11c365fd2de42b44/perk_matrix_txt"
 
 @st.cache_data
 def load_web_matrix():
