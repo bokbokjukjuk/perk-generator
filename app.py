@@ -32,7 +32,7 @@ VIRTUAL_CAT_MAP = {'오라버프통합': ['오라', '버프', '오라/버프']}
 DEFAULT_GRADES = ['S', 'A', 'B', 'B']
 GRADE_VALUES = {'S': 5, 'A': 4, 'B': 3, 'C': 2, 'D': 1, 'X': 0}
 
-BASE_CHARS = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%^&*"
+MAP_CHARS = "ABCDEFGHJKLMNOPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%^&*"
 G_ENC = {'무작위':'Z', 'S':'Q', 'A':'W', 'B':'E', 'C':'R', 'D':'T', 'X':'Y'}
 
 # ==========================================
